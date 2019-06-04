@@ -1,6 +1,5 @@
 <template>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,22 +35,21 @@
                 </li>
             </ul>
         </div>
-        </nav>
-        <router-view />
-    </div>
+    </nav>
 </template>
 
 <script>
-// TODO: Dynamic component for the views??
+import { mapActions } from 'vuex'
 
 export default {
-  name: 'App',
-  data () {
-    return {
-    }
+  methods: {
+    ...mapActions([
+      'CHANGE_VIEW'
+    ])
   }
 }
 </script>
 
-<style scoped>
+<style>
+
 </style>
