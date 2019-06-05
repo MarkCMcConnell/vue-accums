@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Eligibility.vue renders the component 1`] = `
+<div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h3>Coverages</h3>
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h3>Balances</h3>
+      <div class="stubbed"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h3>Gaps in Care</h3>
+      <div class="stubbed"></div>
+    </div>
+  </div>
+</div>
+`;
