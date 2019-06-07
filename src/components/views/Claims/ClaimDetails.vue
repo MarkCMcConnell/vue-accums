@@ -46,54 +46,54 @@
 </template>
 
 <script>
-import { dataHelpers } from '../../mixins/dataHelpers.js'
-import DataTables from '../shard/DataTables.vue'
+import { dataHelpers } from '../../../mixins/dataHelpers.js'
+import DataTables from '../ui/DataTables.vue'
 
 export default {
-    props: {
-        memberData: {
-            type: Object,
-            required: true,
-        },
-    },
-    mixins: [ dataHelpers ],
-    components: {
-        DataTables
-    },
-    data () {
-        return {
-            claimTotalsFields: [
-                {
-                label: 'TOTAL CHARGES',
-                field: ''
-                },
-                {
-                label: ' ',
-                field: '-'
-                },
-                {
-                label: 'DISCOUNT',
-                field: ''
-                },
-                {
-                label: ' ',
-                field: '-'
-                },
-                {
-                label: 'PLAN PAID',
-                field: ''
-                },
-                {
-                label: ' ',
-                field: '='
-                },
-                {
-                label: 'YOU OWE',
-                field: ''
-                }
-            ]
-        }
+  props: {
+    memberData: {
+      type: Object,
+      required: true
     }
+  },
+  mixins: [ dataHelpers ],
+  components: {
+    DataTables
+  },
+  data () {
+    return {
+      claimTotalsFields: [
+        {
+          label: 'TOTAL CHARGES',
+          field: ''
+        },
+        {
+          label: ' ',
+          field: '-'
+        },
+        {
+          label: 'DISCOUNT',
+          field: ''
+        },
+        {
+          label: ' ',
+          field: '-'
+        },
+        {
+          label: 'PLAN PAID',
+          field: ''
+        },
+        {
+          label: ' ',
+          field: '='
+        },
+        {
+          label: 'YOU OWE',
+          field: ''
+        }
+      ]
+    }
+  }
 }
 </script>
 

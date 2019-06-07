@@ -42,11 +42,11 @@
 import { mapActions } from 'vuex'
 
 export default {
-    methods: {
-        ...mapActions([
-            'CHANGE_VIEW',
-        ]),
-    }
+  methods: {
+    ...mapActions([
+      'CHANGE_VIEW'
+    ])
+  }
 }
 </script>
 

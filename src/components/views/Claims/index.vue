@@ -14,9 +14,9 @@
 
 <script>
 // Components
-import DataTable from '../components/shared/DataTable.vue'
+import DataTable from '../../ui/DataTable.vue'
 // Mixins
-import { dataHelpers } from '../mixins/dataHelpers.js'
+import { dataHelpers } from '../../../mixins/dataHelpers.js'
 export default {
   components: {
     DataTable
@@ -69,7 +69,7 @@ export default {
           let currentKey = obj[field.field]
 
           // Capture dates and convert /Date()/ format to human readable
-          if (typeof (currentKey) === 'string' && currentKey.substring(0, 5) == '/Date') {
+          if (typeof (currentKey) === 'string' && currentKey.substring(0, 5) === '/Date') {
             currentKey = this.convertJSONDateToDateString(currentKey)
           }
 

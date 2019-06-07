@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // Views
-import Home from './views/Home.vue'
-import Eligibility from './views/Eligibility.vue'
-import ClaimsResults from './views/ClaimsResults.vue'
+import Home from './components/views/Home'
+import Eligibility from './components/views/Eligibility'
+import Claims from './components/views/Claims'
 
 Vue.use(Router)
 
@@ -20,9 +20,9 @@ export default new Router({
       component: Eligibility
     },
     {
-      path: '/claimsresults',
-      name: 'claimsresults',
-      component: ClaimsResults
+      path: '/claims',
+      name: 'claims',
+      component: Claims
     }
   ],
   mode: 'history'

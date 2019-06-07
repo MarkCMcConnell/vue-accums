@@ -45,7 +45,7 @@
 // TODO: Dynamic component for the views??
 
 export default {
-    name: 'App',
+  name: 'App'
 }
 </script>
 

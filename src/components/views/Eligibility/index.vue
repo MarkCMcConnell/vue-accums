@@ -1,73 +1,56 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <PersonalInfo
-                    :memberData="this.memberData"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <EmploymentInfo
-                    :memberData="this.memberData"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <ContactInfo
-                    :memberData="this.memberData"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <PlanInfo
-                    :memberData="this.memberData"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <h3>Coverages</h3>
-                <DataTable
-                    :data="formatCoverages"
-                    :fields="coveragesFields"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <h3>Balances</h3>
-                <DataTable
-                    :data="formatAccumulators"
-                    :fields="accumulatorFields"
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <h3>Gaps in Care</h3>
-                <DataTable
-                    :data="formatGaps"
-                    :fields="gapsFields"
-                />
-            </div>
-        </div>
+  <div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <PersonalInfo :memberData="this.memberData"/>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <EmploymentInfo :memberData="this.memberData"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <ContactInfo :memberData="this.memberData"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <PlanInfo :memberData="this.memberData"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <h3>Coverages</h3>
+        <DataTable :data="formatCoverages" :fields="coveragesFields"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <h3>Balances</h3>
+        <DataTable :data="formatAccumulators" :fields="accumulatorFields"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <h3>Gaps in Care</h3>
+        <DataTable :data="formatGaps" :fields="gapsFields"/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 // A component data object would help centralize the configs
 // Components
-import DataTable from '../components/shared/DataTable.vue'
-import PersonalInfo from '../components/elig/PersonalInfo.vue'
-import EmploymentInfo from '../components/elig/EmploymentInfo.vue'
-import ContactInfo from '../components/elig/ContactInfo.vue'
-import PlanInfo from '../components/elig/PlanInfo.vue'
+import DataTable from '../../ui/DataTable.vue'
+import PersonalInfo from './PersonalInfo.vue'
+import EmploymentInfo from './EmploymentInfo.vue'
+import ContactInfo from './ContactInfo.vue'
+import PlanInfo from './PlanInfo.vue'
 // Mixins
-import { dataHelpers } from '../mixins/dataHelpers.js'
+import { dataHelpers } from '../../../mixins/dataHelpers.js'
 
 export default {
   components: {
@@ -77,20 +60,18 @@ export default {
     ContactInfo,
     PlanInfo
   },
-  mixins: [
-    dataHelpers
-  ],
+  mixins: [dataHelpers],
   data () {
     return {
       memberData: this.$store.state.memberData[0],
       /*
-                    This is where the configs for the table headers and fields can be edited.
-                    Info table (Personal, Employment, Plan, etc) take a title (String).
-                    Table headers and data will follow the order of the array, so make sure
-                    they are in the desired order for the view.
-                    Make certyain that the Headers and Fields are in the same index in the arrays.
-                    Exclusions are 2D array - [[FieldName, FieldValue]]
-                */
+          This is where the configs for the table headers and fields can be edited.
+          Info table (Personal, Employment, Plan, etc) take a title (String).
+          Table headers and data will follow the order of the array, so make sure
+          they are in the desired order for the view.
+          Make certyain that the Headers and Fields are in the same index in the arrays.
+          Exclusions are 2D array - [[FieldName, FieldValue]]
+      */
       coverages: this.$store.state.memberData[0].Coverages,
       coveragesFields: [
         {
@@ -172,13 +153,13 @@ export default {
   },
   computed: {
     formatAccumulators () {
-      this.accumulators = this.accumulators.filter(accum => {
+      const accums = this.accumulators.filter(accum => {
         return accum.SpecificType !== 'GC'
       })
       // Array that will be pushed to the DataTables component
       let dataValues = []
 
-      for (let value of this.accumulators) {
+      for (let value of accums) {
         // Object that will hold the new values to be pushed to the array
         let data = {}
 
@@ -193,7 +174,10 @@ export default {
             }
           }
           // Capture dates and convert /Date()/ format to human readable
-          if (typeof currentKey === 'string' && currentKey.substring(0, 5) == '/Date') {
+          if (
+            typeof currentKey === 'string' &&
+            currentKey.substring(0, 5) === '/Date'
+          ) {
             currentKey = this.convertJSONDateToDateString(currentKey)
           }
 
@@ -220,7 +204,10 @@ export default {
           }
 
           if (field.field === 'ProgressBar') {
-            currentKey = this.calculatePercent(value.CurrentAmount, value.MaximumAmount)
+            currentKey = this.calculatePercent(
+              value.CurrentAmount,
+              value.MaximumAmount
+            )
           }
           // Avoid setting an empty row
           if (currentKey !== '' && currentKey !== undefined) {
@@ -283,11 +270,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .row {
-        padding: 10px 0;
-    }
+.row {
+  padding: 10px 0;
+}
 </style>
 
 <style>
-
 </style>

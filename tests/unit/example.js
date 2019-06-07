@@ -1,7 +1,7 @@
 // shallowMount only mounts the called component
 // mount includes the child components
 
-it('does not render when not passed visible prop', () {
+it('does not render when not passed visible prop', () => {
     const wrapper = mount(Modal)
     expect(wrapper.isEmpty()).toBe(true)
 });
@@ -169,7 +169,7 @@ it('renders correctly', () => {
 export default {
     get: jest.fn(() => Promise.resolve({
         data: {}
-    }));
+    }))
 };
 
 // In the test file - make the test async

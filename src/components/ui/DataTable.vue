@@ -28,54 +28,55 @@
 </template>
 
 <script>
-import ProgressBar from "../shared/ProgressBar.vue";
-/*
-        TODO: Sorting columns with click on table headers
-    */
+import ProgressBar from './ProgressBar.vue'
+
 export default {
-    components: {
-        ProgressBar
-    },
-    props: {
-        fields: Array,
-        data: Array
-    },
-    data() {
-        return {
-        currentSort: this.fields[0].label,
-        currentDirection: "ascending"
-        };
-    },
-    computed: {
-        sortedData: function() {
-        return this.data.sort((a, b) => {
-            let modifier = 1;
-
-            if (this.currentDirection === "descending") {
-            modifier = -1;
-            }
-
-            if (a[this.currentSort] < b[this.currentSort]) {
-            return -1 * modifier;
-            } else if (a[this.currentSort] > b[this.currentSort]) {
-            return 1 * modifier;
-            } else {
-            return 0;
-            }
-        });
-        }
-    },
-    methods: {
-        sortColumn(column) {
-        if (column === this.currentSort) {
-            this.currentDirection =
-            this.currentDirection === "ascending" ? "descending" : "ascending";
-        }
-
-        this.currentSort = column;
-        }
+  components: {
+    ProgressBar
+  },
+  props: {
+    fields: Array,
+    data: Array
+  },
+  data () {
+    return {
+      currentSort: this.fields[0].label,
+      currentDirection: 'ascending',
+      tableData: this.data
     }
-};
+  },
+  computed: {
+    sortedData: function () {
+      const sortedData = this.tableData
+
+      return sortedData.sort((a, b) => {
+        let modifier = 1
+
+        if (this.currentDirection === 'descending') {
+          modifier = -1
+        }
+
+        if (a[this.currentSort] < b[this.currentSort]) {
+          return -1 * modifier
+        } else if (a[this.currentSort] > b[this.currentSort]) {
+          return 1 * modifier
+        } else {
+          return 0
+        }
+      })
+    }
+  },
+  methods: {
+    sortColumn (column) {
+      if (column === this.currentSort) {
+        this.currentDirection =
+            this.currentDirection === 'ascending' ? 'descending' : 'ascending'
+      }
+
+      this.currentSort = column
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

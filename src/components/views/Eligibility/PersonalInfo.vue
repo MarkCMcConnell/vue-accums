@@ -36,16 +36,16 @@
 </template>
 
 <script>
-import { dataHelpers } from '../../mixins/dataHelpers.js'
+import { dataHelpers } from '../../../mixins/dataHelpers.js'
 
 export default {
-    props: {
-        memberData: {
-            type: Object,
-            required: true,
-        }
-    },
-    mixins: [ dataHelpers ]
+  props: {
+    memberData: {
+      type: Object,
+      required: true
+    }
+  },
+  mixins: [ dataHelpers ]
 }
 </script>
 
