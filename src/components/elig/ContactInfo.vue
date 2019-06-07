@@ -37,22 +37,25 @@
 </template>
 
 <script>
-import { dataHelpers } from '../../mixins/dataHelpers.js'
+import { dataHelpers } from "../../mixins/dataHelpers.js";
 
 export default {
-  props: {
-    memberData: Object
-  },
-  mixins: [ dataHelpers ]
-}
+    props: {
+        memberData: {
+            type: Object,
+            required: true
+        }
+    },
+    mixins: [dataHelpers]
+};
 </script>
 
 <style scoped>
-    dt {
-        font-weight: bold;
-    }
+dt {
+    font-weight: bold;
+}
 
-    dl {
-        border-bottom: 1px solid rgb(204, 204, 204);
-    }
+dl {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
 </style>

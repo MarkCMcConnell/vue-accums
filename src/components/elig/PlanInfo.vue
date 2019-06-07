@@ -37,10 +37,13 @@
 import { dataHelpers } from '../../mixins/dataHelpers.js'
 
 export default {
-  props: {
-    memberData: Object
-  },
-  mixins: [ dataHelpers ]
+    props: {
+        memberData: {
+            type: Object,
+            required: true,
+        },
+    },
+    mixins: [ dataHelpers ]
 }
 </script>
 

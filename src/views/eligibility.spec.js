@@ -38,5 +38,5 @@ describe('Eligibility.vue', () => {
         expect(wrapper.html()).toMatchSnapshot();
     });
 
-    
+
 });

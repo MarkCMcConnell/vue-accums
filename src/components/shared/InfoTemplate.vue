@@ -25,9 +25,12 @@
 
 <script>
 export default {
-  props: {
-    memberData: Object
-  }
+    props: {
+        memberData: {
+            type: Object,
+            required: true,
+        },
+    },
 }
 </script>
 

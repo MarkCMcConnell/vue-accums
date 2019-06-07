@@ -51,7 +51,10 @@ import DataTables from '../shard/DataTables.vue'
 
 export default {
     props: {
-        memberData: Object
+        memberData: {
+            type: Object,
+            required: true,
+        },
     },
     mixins: [ dataHelpers ],
     components: {

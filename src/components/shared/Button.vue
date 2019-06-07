@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  props: {
-    type: String,
-    className: String
-  }
+    props: {
+        type: String,
+        className: String
+    }
 }
 </script>
 
