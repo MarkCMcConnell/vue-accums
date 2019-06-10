@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="row">
       <div class="col-md-10 offset-md-1">
         <PersonalInfo :memberData="this.memberData"/>
@@ -38,13 +38,14 @@
         <DataTable :data="formatGaps" :fields="gapsFields"/>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-// A component data object would help centralize the configs
-// Components
+// General UI Components
 import DataTable from '../../ui/DataTable.vue'
+
+// Eligibility-specific Components
 import PersonalInfo from './PersonalInfo.vue'
 import EmploymentInfo from './EmploymentInfo.vue'
 import ContactInfo from './ContactInfo.vue'
