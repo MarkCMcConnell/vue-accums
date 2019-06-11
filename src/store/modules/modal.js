@@ -1,15 +1,11 @@
+import { HIDE_MODAL } from '../mutation-types'
+
 const state = {
     showModal: true
 }
 
-const actions = {
-    HIDE_MODAL ({ commit }, payload) {
-        commit('showModal', payload)
-    }
-}
-
 const mutations = {
-    HIDE_MODAL (state, payload) {
+    [HIDE_MODAL] (state) {
         state.showModal = !state.showModal
     }
 }
@@ -17,6 +13,5 @@ const mutations = {
 export default {
     namespace: true,
     state,
-    actions,
     mutations
 }
