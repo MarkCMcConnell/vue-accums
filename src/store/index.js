@@ -13,7 +13,9 @@ export default new Vuex.Store({
   state: {
     memberData: memberData,
     claims: claims,
-    currentView: 'Home',
-    modal
+    currentView: 'Home'
   },
+  modules: {
+    modal
+  }
 })

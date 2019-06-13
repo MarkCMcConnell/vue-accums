@@ -1,17 +1,16 @@
 import { HIDE_MODAL } from '../mutation-types'
 
 const state = {
-    showModal: true
+  showModal: true
 }
 
 const mutations = {
-    [HIDE_MODAL] (state) {
-        state.showModal = !state.showModal
-    }
+  [HIDE_MODAL] (state) {
+    state.showModal = !state.showModal
+  }
 }
 
 export default {
-    namespace: true,
-    state,
-    mutations
+  state,
+  mutations
 }

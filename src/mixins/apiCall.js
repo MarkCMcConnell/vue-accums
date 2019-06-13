@@ -1,3 +1,4 @@
+/* eslint-disable */
 import request from 'request'
 import oauth from 'oauth-1.0a'
 import hmac from 'create-hmac'

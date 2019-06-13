@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vuex from 'vuex'
 import {
   mount,

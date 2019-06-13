@@ -1,47 +1,62 @@
 <template>
     <div class="modalBackdrop">
-        
-        <h2 class="modal-title">
-            <slot name="title"></slot>
-        </h2>
-        
-        <slot name="body" />
+        <div class="modal-container">
+            <header class="modal-header">
+                    <slot name="modal-title"></slot>
+            </header>
 
-        <slot name="footer" />
-
-        <Btn
-            styling="btn-primary"
-            @click="toggleModal"
-        >
-            <slot name="button" />
-        </Btn>
+            <section  class="modal-body">
+                <slot name="modal-body"/>
+            </section>
+            <footer class="modal-footer">
+                <slot name="modal-footer" />
+                <button
+                    class="btn-primary"
+                    @click.prevent="HIDE_MODAL"
+                >
+                    <slot name="modal-button">Close</slot>
+                </button>
+            </footer>
+        </div>
     </div>
 </template>
 
 <script>
-import Btn from './Btn.vue'
+import { mapMutations } from 'vuex'
 
 export default {
-    data () {
-        return {
-            
-        }
-    },
-    computed: {
-        toggleModal () {
-            
-        },
-    },
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    ...mapMutations([
+        'HIDE_MODAL'
+    ])
+  }
 }
 </script>
 
 <style scoped>
     .modalBackdrop {
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-container {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate( -50%, -50%);
+        background-color: #fff;
     }
 </style>

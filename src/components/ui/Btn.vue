@@ -1,5 +1,5 @@
 <template>
-    <component 
+    <component
       :is="type"
       class="btn"
       :class="[ styling ]"
@@ -13,11 +13,11 @@ export default {
   props: {
     href: {
       type: String,
-      default: null,
+      default: null
     },
     to: {
       type: String,
-      default: null,
+      default: null
     },
     styling: {
       type: String,
@@ -32,7 +32,7 @@ export default {
     type () {
       return this.href ? 'a' : 'button'
     },
-    styling () {
+    stylingChange () {
       return this.styling === 'primary' ? 'btn-primary' : 'btn-secondary'
     }
   }
