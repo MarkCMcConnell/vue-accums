@@ -20,8 +20,8 @@ export default new Router({
       component: Eligibility
     },
     {
-      path: '/claims',
-      name: 'claims',
+      path: '/claimsresults',
+      name: 'claimsresults',
       component: Claims
     }
   ],

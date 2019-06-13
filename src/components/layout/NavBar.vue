@@ -6,7 +6,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li
+                    class="nav-item"
+                    :class="{ 'active': (this.$store.state.navbar.currentView === 'home') }"
+                    @click="CHANGE_VIEW('home')"
+                >
                     <router-link
                         tag="a"
                         to="/"
@@ -15,7 +19,11 @@
                         Home
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <li
+                    class="nav-item"
+                    :class="{ 'active': (this.$store.state.navbar.currentView === 'eligibility') }"
+                    @click="CHANGE_VIEW('eligibility')"
+                >
                     <router-link
                         tag="a"
                         to="/eligibility"
@@ -24,7 +32,11 @@
                         Eligibility
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <li
+                    class="nav-item"
+                    :class="{ 'active': (this.$store.state.navbar.currentView === 'claims') }"
+                    @click="CHANGE_VIEW('claims')"
+                >
                     <router-link
                         tag="a"
                         to="/claimsresults"
@@ -39,17 +51,26 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
-  methods: {
-    ...mapActions([
-      'CHANGE_VIEW'
-    ])
-  }
+    data () {
+        return {
+            currentView: 'home'
+        }
+    },
+    methods: {
+        ...mapMutations(['CHANGE_VIEW']),
+        changeView(view) {
+            return this.currentView = view
+        }
+    }
 }
 </script>
 
 <style>
-
+.active {
+    color: rgba(0,0,0,0.9);
+    font-weight: 700;
+}
 </style>
