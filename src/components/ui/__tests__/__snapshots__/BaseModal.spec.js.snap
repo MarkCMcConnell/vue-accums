@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component Modal rendering renders slot content 1`] = `
+<div class="modalBackdrop">
+  <div class="modal-container">
+    <header class="modal-header"></header>
+    <section class="modal-body">
+      <p>Some Content</p>
+    </section>
+    <footer class="modal-footer">
+      <p>More Content</p> <button class="modal-button btn-primary">Close</button>
+    </footer>
+  </div>
+</div>
+`;

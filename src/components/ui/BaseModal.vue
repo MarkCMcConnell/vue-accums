@@ -2,19 +2,19 @@
     <div class="modalBackdrop">
         <div class="modal-container">
             <header class="modal-header">
-                    <slot name="modal-title"></slot>
+                    <slot name="modalTitle"></slot>
             </header>
 
             <section  class="modal-body">
-                <slot name="modal-body"/>
+                <slot name="modalBody"/>
             </section>
             <footer class="modal-footer">
-                <slot name="modal-footer" />
+                <slot name="modalFooter" />
                 <button
-                    class="btn-primary"
+                    class="modal-button btn-primary"
                     @click.prevent="HIDE_MODAL"
                 >
-                    <slot name="modal-button">Close</slot>
+                    <slot name="modalButton">Close</slot>
                 </button>
             </footer>
         </div>
@@ -25,16 +25,11 @@
 import { mapMutations } from 'vuex'
 
 export default {
-  data () {
-    return {
-
+    methods: {
+        ...mapMutations([
+            'HIDE_MODAL'
+        ])
     }
-  },
-  methods: {
-    ...mapMutations([
-        'HIDE_MODAL'
-    ])
-  }
 }
 </script>
 

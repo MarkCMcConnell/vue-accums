@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home.vue renders the component 1`] = `
-<div>
+<section class="container">
   <h1>Home</h1>
-</div>
+  <div class="stubbed modalBackdrop"></div>
+</section>
 `;
