@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import modal from '@/store/modules/modal'
 
 import BaseModal from '@/components/ui/BaseModal.vue'
 

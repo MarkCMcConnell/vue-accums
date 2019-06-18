@@ -18,7 +18,4 @@ export default {
 </script>
 
 <style>
-    modalContainer {
-        position: relative;
-    }
 </style>
