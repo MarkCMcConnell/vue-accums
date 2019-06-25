@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  props: {
-    width: {
-      type: Number,
-      required: true
+    props: {
+        width: {
+            type: Number,
+            required: true
+        }
     }
-  }
 }
 </script>
 

@@ -2,7 +2,7 @@
 
 exports[`Home.vue renders the component 1`] = `
 <section class="container">
-  <h1>Home</h1>
   <div class="stubbed modalBackdrop"></div>
+  <h1>Home</h1>
 </section>
 `;

@@ -4,5 +4,5 @@ const getters = {
 }
 
 export default {
-  getters
+    getters
 }
