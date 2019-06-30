@@ -25,7 +25,9 @@ export const dataHelpers = {
             }
         },
         formatSocial(val) {
-
+            if (val !== null) {
+                return `${val.substring(0, 3)}-${val.substring(3, 2)}-${val.substring(5)}`
+            }
         }
     }
 }

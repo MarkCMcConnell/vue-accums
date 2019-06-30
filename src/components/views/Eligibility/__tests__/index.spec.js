@@ -19,15 +19,15 @@ describe('Eligibility.vue', () => {
     beforeEach(() => {
         mockStore = store
         wrapper = mount(Elig, {
-        store: mockStore,
-        localVue,
-        stubs: {
-            PersonalInfo: '<div class="stubbed" />',
-            EmploymentInfo: '<div class="stubbed" />',
-            ContactInfo: '<div class="stubbed" />',
-            PlanInfo: '<div class="stubbed" />',
-            DataTable: '<div class="stubbed" />'
-        }
+            store: mockStore,
+            localVue,
+            stubs: {
+                PersonalInfo: '<div class="stubbed" />',
+                EmploymentInfo: '<div class="stubbed" />',
+                ContactInfo: '<div class="stubbed" />',
+                PlanInfo: '<div class="stubbed" />',
+                DataTable: '<div class="stubbed" />'
+            }
         })
     })
 
@@ -35,5 +35,39 @@ describe('Eligibility.vue', () => {
         expect(wrapper.html()).toMatchSnapshot()
     })
 
-    describe('')
+    describe('formatAccumulators', () => {
+        describe('the return value', () => {
+            it('should return an array', () => {
+                expect(Array.isArray(wrapper.vm.formatAccumulators)).toBeTruthy()
+            })
+
+            it('should have an object in the array', () => {
+                expect.arrayContaining([{}])
+            })
+        })
+
+        it('converts IndividualAccum to Individual', () => {
+            expect.arrayContaining([
+                expect.objectContaining({
+                    IndividualAccum: 'Individual'
+                })
+            ])
+        })
+
+        it('converts to CoverageType to full word', () => {
+            expect.arrayContaining([
+                expect.objectContaining({
+                    CoverageType: 'Medical'
+                })
+            ])
+        })
+
+        it('converts values to currency amounts', () => {
+            expect.arrayContaining([
+                expect.objectContaining({
+                    CurrentAmount: '$12323'
+                })
+            ])
+        })
+    })
 })

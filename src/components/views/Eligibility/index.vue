@@ -169,9 +169,9 @@ export default {
 
                     if (field.field === "IndividualAccum") {
                         if (currentKey) {
-                        currentKey = "Individual";
+                            currentKey = "Individual";
                         } else {
-                        currentKey = "Family";
+                            currentKey = "Family";
                         }
                     }
                     // Capture dates and convert /Date()/ format to human readable
