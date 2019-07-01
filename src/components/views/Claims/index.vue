@@ -1,15 +1,12 @@
 <template>
-    <section>
-        <div class="row">
-            <div class="col-md-10 offset-md-1">
-                <h3>Claims</h3>
-                <DataTable
-                    :data="formatClaims"
-                    :fields="claimsResultsFields"
-                />
-            </div>
-        </div>
-    </section>
+  <section>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <h3>Claims</h3>
+        <DataTable :data="formatClaims" :fields="claimsResultsFields"/>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -21,7 +18,7 @@ export default {
   components: {
     DataTable
   },
-  mixins: [ dataHelpers ],
+  mixins: [dataHelpers],
   data () {
     return {
       claims: this.$store.state.claims,
@@ -92,5 +89,4 @@ export default {
 </script>
 
 <style>
-
 </style>

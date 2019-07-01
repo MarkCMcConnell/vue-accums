@@ -7,7 +7,7 @@ import hmac from 'create-hmac'
 
 export const callHxApi = {
     methods: {
-        callApi(requestData, apiParameters) {
+        callApi (requestData, apiParameters) {
             // A number of items here must be generated from the Healthx API Management tools in your organization.
             // Consumer key, consumer secret, token key, token secret, and the instanceid are all derived from the application
             const auth = oauth({
@@ -16,7 +16,7 @@ export const callHxApi = {
                     secret: 'DPPyyqi2RyfCXrNYyXgG0/HGRk8Jt5b+YCObIgRIL/bGCYGt'
                 },
                 signature_method: 'HMAC-SHA1',
-                hash_function(base_string, key) {
+                hash_function (base_string, key) {
                     return hmac('sha1', Buffer.from(key)).update(base_string).digest('base64')
                 }
             })

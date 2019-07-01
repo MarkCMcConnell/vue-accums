@@ -1,7 +1,7 @@
 <template>
-    <transition name="fade">
-        <slot />
-    </transition>
+  <transition name="fade">
+    <slot/>
+  </transition>
 </template>
 
 <script>
@@ -13,11 +13,11 @@ export default {
 <style>
 .fade-enter-active,
 .fade-leave-active {
-    transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .fade-enter,
 .fade-leave {
-    display: none;
+  display: none;
 }
 </style>

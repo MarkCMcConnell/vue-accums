@@ -1,9 +1,9 @@
 export const dataHelpers = {
     methods: {
-        calculatePercent(current, max) {
+        calculatePercent (current, max) {
             return Math.floor(current / max * 100)
         },
-        convertJSONDateToDateString(dateVal) {
+        convertJSONDateToDateString (dateVal) {
             if (dateVal) {
                 let dtint = parseInt(dateVal.substr(6))
                 let dt = new Date(dtint)
@@ -14,17 +14,17 @@ export const dataHelpers = {
             }
             return ''
         },
-        formatCurrency(val) {
+        formatCurrency (val) {
             if (val !== null) {
                 return `$${val.toFixed(2)}`
             }
         },
-        formatPhoneNumber(val) {
+        formatPhoneNumber (val) {
             if (val !== null) {
                 return `(${val.substring(0, 3)})${val.substring(3, 6)}-${val.substring(6)}`
             }
         },
-        formatSocial(val) {
+        formatSocial (val) {
             if (val !== null) {
                 return `${val.substring(0, 3)}-${val.substring(3, 2)}-${val.substring(5)}`
             }

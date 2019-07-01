@@ -6,7 +6,7 @@ import BaseModal from '@/components/ui/BaseModal.vue'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('Modal component', () => {    
+describe('Modal component', () => {
     describe('Modal rendering', () => {
         let wrapper
 
@@ -20,14 +20,14 @@ describe('Modal component', () => {
                 }
             })
         })
-        
+
         it('renders correctly', () => {
             expect(wrapper.find('.modalBackdrop')).toBeTruthy()
         })
-    
+
         it('renders slot content', () => {
             expect(wrapper.html()).toMatchSnapshot()
-        }) 
+        })
     })
 
     describe('Modal behavior', () => {
@@ -49,7 +49,7 @@ describe('Modal component', () => {
                     }
                 }
             })
-    
+
             wrapper = shallowMount(BaseModal, {
                 store,
                 localVue
