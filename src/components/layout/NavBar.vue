@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       currentView: 'home'
-    };
+    }
   },
   methods: {
     ...mapMutations(['CHANGE_VIEW']),
@@ -55,7 +55,7 @@ export default {
       return (this.currentView = view)
     }
   }
-};
+}
 </script>
 
 <style>

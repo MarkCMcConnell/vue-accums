@@ -43,15 +43,15 @@
 
 <script>
 // General UI Components
-import DataTable from "../../ui/DataTable.vue";
+import DataTable from '../../ui/DataTable.vue'
 
 // Eligibility-specific Components
-import PersonalInfo from "./PersonalInfo.vue";
-import EmploymentInfo from "./EmploymentInfo.vue";
-import ContactInfo from "./ContactInfo.vue";
-import PlanInfo from "./PlanInfo.vue";
+import PersonalInfo from './PersonalInfo.vue'
+import EmploymentInfo from './EmploymentInfo.vue'
+import ContactInfo from './ContactInfo.vue'
+import PlanInfo from './PlanInfo.vue'
 // Mixins
-import { dataHelpers } from "../../../mixins/dataHelpers.js";
+import { dataHelpers } from '../../../mixins/dataHelpers.js'
 
 export default {
   components: {
@@ -76,198 +76,198 @@ export default {
       coverages: this.$store.state.memberData[0].Coverages,
       coveragesFields: [
         {
-          label: "Name",
-          field: "CoverageName"
+          label: 'Name',
+          field: 'CoverageName'
         },
         {
-          label: "Type",
-          field: "CovPlan"
+          label: 'Type',
+          field: 'CovPlan'
         },
         {
-          label: "Effective Date",
-          field: "EffectiveDate"
+          label: 'Effective Date',
+          field: 'EffectiveDate'
         },
         {
-          label: "Term Date",
-          field: "TermDate"
+          label: 'Term Date',
+          field: 'TermDate'
         }
       ],
       accumulators: this.$store.state.memberData[0].Accumulators,
       accumulatorFields: [
         {
-          label: "Name",
-          field: "Name"
+          label: 'Name',
+          field: 'Name'
         },
         {
-          label: "Type",
-          field: "IndividualAccum"
+          label: 'Type',
+          field: 'IndividualAccum'
         },
         {
-          label: "Coverage",
-          field: "CoverageType"
+          label: 'Coverage',
+          field: 'CoverageType'
         },
         {
-          label: "Plan Year",
-          field: "PlanYear"
+          label: 'Plan Year',
+          field: 'PlanYear'
         },
         {
-          label: "Amount Met",
-          field: "CurrentAmount"
+          label: 'Amount Met',
+          field: 'CurrentAmount'
         },
         {
-          label: "Max Amount",
-          field: "MaximumAmount"
+          label: 'Max Amount',
+          field: 'MaximumAmount'
         },
         {
-          label: "Percent Met",
-          field: "ProgressBar"
+          label: 'Percent Met',
+          field: 'ProgressBar'
         }
       ],
       gaps: this.$store.state.memberData[0].Accumulators,
       gapsFields: [
         {
-          label: "Name",
-          field: "Name"
+          label: 'Name',
+          field: 'Name'
         },
         {
-          label: "Description",
-          field: "Accum_Desc"
+          label: 'Description',
+          field: 'Accum_Desc'
         },
         {
-          label: "Recommended Frequency",
-          field: "RecFrequency"
+          label: 'Recommended Frequency',
+          field: 'RecFrequency'
         },
         {
-          label: "Status",
-          field: "ClaimSystemCode"
+          label: 'Status',
+          field: 'ClaimSystemCode'
         },
         {
-          label: "Last Visit",
-          field: "Field1_Date"
+          label: 'Last Visit',
+          field: 'Field1_Date'
         },
         {
-          label: "Covered Benefit",
-          field: "CovBenefit"
+          label: 'Covered Benefit',
+          field: 'CovBenefit'
         }
       ]
-    };
+    }
   },
   computed: {
     formatAccumulators () {
       const accums = this.accumulators.filter(accum => {
-        return accum.SpecificType !== "GC";
-      });
+        return accum.SpecificType !== '"GC'
+      })
       // Array that will be pushed to the DataTables component
-      let dataValues = [];
+      let dataValues = []
 
       for (let value of accums) {
         // Object that will hold the new values to be pushed to the array
-        let data = {};
+        let data = {}
 
         for (let field of this.accumulatorFields) {
-          let currentKey = value[field.field];
+          let currentKey = value[field.field]
 
-          if (field.field === "IndividualAccum") {
+          if (field.field === 'IndividualAccum') {
             if (currentKey) {
-              currentKey = "Individual";
+              currentKey = 'Individual'
             } else {
-              currentKey = "Family";
+              currentKey = 'Family'
             }
           }
           // Capture dates and convert /Date()/ format to human readable
           if (
-            typeof currentKey === "string" &&
-            currentKey.substring(0, 5) === "/Date"
+            typeof currentKey === 'string' &&
+            currentKey.substring(0, 5) === '/Date'
           ) {
-            currentKey = this.convertJSONDateToDateString(currentKey);
+            currentKey = this.convertJSONDateToDateString(currentKey)
           }
 
-          if (field.field === "CoverageType") {
+          if (field.field === 'CoverageType') {
             // Use this switch statement to customize or add values
             switch (currentKey) {
-              case "M":
-                currentKey = "Medical";
-                break;
-              case "D":
-                currentKey = "Dental";
-                break;
+              case 'M':
+                currentKey = 'Medical'
+                break
+              case 'D':
+                currentKey = 'Dental'
+                break
               default:
-                break;
+                break
             }
           }
 
-          if (field.field === "CurrentAmount") {
-            currentKey = this.formatCurrency(value.CurrentAmount);
+          if (field.field === 'CurrentAmount') {
+            currentKey = this.formatCurrency(value.CurrentAmount)
           }
 
-          if (field.field === "MaximumAmount") {
-            currentKey = this.formatCurrency(value.MaximumAmount);
+          if (field.field === 'MaximumAmount') {
+            currentKey = this.formatCurrency(value.MaximumAmount)
           }
 
-          if (field.field === "ProgressBar") {
+          if (field.field === 'ProgressBar') {
             currentKey = this.calculatePercent(
               value.CurrentAmount,
               value.MaximumAmount
-            );
+            )
           }
           // Avoid setting an empty row
-          if (currentKey !== "" && currentKey !== undefined) {
-            data[field.field] = currentKey;
+          if (currentKey !== '' && currentKey !== undefined) {
+            data[field.field] = currentKey
           }
+          // Push to the array that will be passed to the coverages table
         }
-        // Push to the array that will be passed to the coverages table
-        dataValues.push(data);
+        dataValues.push(data)
       }
-      return dataValues;
+      return dataValues
     },
     formatCoverages () {
-      let dataValues = [];
+      let dataValues = []
       for (let obj of this.coverages) {
-        let data = {};
+        let data = {}
 
         for (let field of this.coveragesFields) {
-          let currentKey = obj[field.field];
+          let currentKey = obj[field.field]
           // Capture dates and convert /Date()/ format to human readable
-          if (currentKey.substring(0, 5) === "/Date") {
-            currentKey = this.convertJSONDateToDateString(currentKey);
+          if (currentKey.substring(0, 5) === '/Date') {
+            currentKey = this.convertJSONDateToDateString(currentKey)
           }
           // Avoid setting an empty row
           if (currentKey !== undefined) {
-            data[field.field] = currentKey;
+            data[field.field] = currentKey
           }
         }
         // Push to the array that will be passed to the coverages table
-        dataValues.push(data);
+        dataValues.push(data)
       }
-      return dataValues;
+      return dataValues
     },
     formatGaps () {
       let gaps = this.gaps.filter(gap => {
-        return gap.SpecificType === "GC";
-      });
+        return gap.SpecificType === 'GC'
+      })
 
-      let dataValues = [];
+      let dataValues = []
       for (let obj of gaps) {
-        let data = {};
+        let data = {}
 
         for (let field of this.gapsFields) {
-          let currentKey = obj[field.field];
+          let currentKey = obj[field.field]
           // Capture dates and convert /Date()/ format to human readable
-          if (currentKey.substring(0, 5) === "/Date") {
-            currentKey = this.convertJSONDateToDateString(currentKey);
+          if (currentKey.substring(0, 5) === '/Date') {
+            currentKey = this.convertJSONDateToDateString(currentKey)
           }
           // Avoid setting an empty row
           if (currentKey !== undefined) {
-            data[field.field] = currentKey;
+            data[field.field] = currentKey
           }
         }
         // Push to the array that will be passed to the coverages table
-        dataValues.push(data);
+        dataValues.push(data)
       }
-      return dataValues;
+      return dataValues
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

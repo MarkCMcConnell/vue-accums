@@ -13,7 +13,7 @@
 
 <script>
 // General UI Components
-import BaseModal from "../../ui/BaseModal.vue";
+import BaseModal from '../../ui/BaseModal.vue'
 
 export default {
   components: {

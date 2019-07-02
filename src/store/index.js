@@ -11,12 +11,12 @@ import claims from '../../data/SampleClaims.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        memberData,
-        claims
-    },
-    modules: {
-        modal,
-        navbar
-    }
+  state: {
+    memberData,
+    claims
+  },
+  modules: {
+    modal,
+    navbar
+  }
 })

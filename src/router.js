@@ -8,22 +8,22 @@ import Claims from './components/views/Claims'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/eligibility',
-            name: 'eligibility',
-            component: Eligibility
-        },
-        {
-            path: '/claimsresults',
-            name: 'claimsresults',
-            component: Claims
-        }
-    ],
-    mode: 'history'
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/eligibility',
+      name: 'eligibility',
+      component: Eligibility
+    },
+    {
+      path: '/claimsresults',
+      name: 'claimsresults',
+      component: Claims
+    }
+  ],
+  mode: 'history'
 })
