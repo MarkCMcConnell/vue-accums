@@ -30,8 +30,10 @@ exports[`Eligibility.vue renders the component 1`] = `
   </div>
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h3>Balances</h3>
-      <div class="stubbed"></div>
+      <section>
+        <h3>My Balances</h3>
+        <div class="stubbed"></div>
+      </section>
     </div>
   </div>
   <div class="row">
