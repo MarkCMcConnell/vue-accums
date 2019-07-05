@@ -1,4 +1,38 @@
 /* eslint-disable */
+
+// Integration test
+it('should display the updated count after the button is click', () => {
+    const wrapper = mount(Counter, {
+        count: 0
+    })
+
+    const ButtonInstance = wrapper.find(Button)
+    const buttonEl = ButtonInstance.find('button')[0]
+    buttonEl.trigger('click')
+
+    const CounterDisplayInstance = wrapper.find(CounterDisplay)
+    const displayEl = CounterDisplayInstance.find('.count-display')[0]
+    expect(displayEl.text()).to.equal('1')
+})
+
+// Shallow test
+it('should pass the "count" prop to CounterDisplay', () => {
+    const counterWrapper = shallow(Counter, {
+        count: 10
+    })
+    const counterDisplayWrapper = counterWrapper.find(CounterDisplay)
+    expect(counterDisplayWrapper.propsData().count).to.equal(10)
+})
+
+it('should update the "count" prop by 1 on Button "increment" event', () => {
+    const counterWrapper = shallow(Counter, {
+        count: 10
+    })
+    const buttonWrapper = counterWrapper.find(Button)
+    buttonWrapper.vm.$emit('increment')
+    expect(counterDisplay.propsData().count).to.equal(11)
+})
+
 // shallowMount only mounts the called component
 // mount includes the child components
 it('does not render when not passed visible prop', () => {
@@ -89,18 +123,18 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default (getters, actions) =>
-new Vuex.Store({
-    modules: {
-        basket: {
-            namespaced: true,
-            actions,
-            getters: {
-                projectId: () => getters.basket.currentTotal || null,
-                currentTotal: () => getters.basket.currentTotal || null
+    new Vuex.Store({
+        modules: {
+            basket: {
+                namespaced: true,
+                actions,
+                getters: {
+                    projectId: () => getters.basket.currentTotal || null,
+                    currentTotal: () => getters.basket.currentTotal || null
+                }
             }
         }
-    }
-});
+    });
 
 // -- The test
 import {
@@ -122,10 +156,10 @@ describe('CoolCard', () => {
     let store;
     beforeEach(() => {
         store = StoreFactory({
-                basket: {
-                    currentTotal: 567
-                }
-            },
+            basket: {
+                currentTotal: 567
+            }
+        },
             actions
         );
     });

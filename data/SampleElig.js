@@ -10,7 +10,7 @@ export default [{
         "CountMet": null,
         "CountRequired": null,
         "CountType": null,
-        "CovBenefit": "Yes",
+        "CovBenefit": "Y",
         "CoverageType": "M",
         "CurrentAmount": 0.0000,
         "DateRange": "20170101-20171231",

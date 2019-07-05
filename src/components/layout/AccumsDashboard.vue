@@ -24,7 +24,6 @@ export default {
   mixins: [dataHelpers],
   data () {
     return {
-      accumulators: this.accumsData,
       accumulatorFields: [
         {
           label: 'Name',
@@ -59,18 +58,18 @@ export default {
   },
   computed: {
     formatAccumulators () {
-      const accums = this.accumulators.filter(accum => {
-        return accum.SpecificType !== '"GC'
+      const accums = this.accumsData.filter(accum => {
+        return accum.SpecificType !== 'GC'
       })
       // Array that will be pushed to the DataTables component
       let dataValues = []
 
-      for (let value of accums) {
+      for (let obj of accums) {
         // Object that will hold the new values to be pushed to the array
         let data = {}
 
         for (let field of this.accumulatorFields) {
-          let currentKey = value[field.field]
+          let currentKey = obj[field.field]
 
           if (field.field === 'IndividualAccum') {
             if (currentKey) {
@@ -78,13 +77,6 @@ export default {
             } else {
               currentKey = 'Family'
             }
-          }
-          // Capture dates and convert /Date()/ format to human readable
-          if (
-            typeof currentKey === 'string' &&
-            currentKey.substring(0, 5) === '/Date'
-          ) {
-            currentKey = this.convertJSONDateToDateString(currentKey)
           }
 
           if (field.field === 'CoverageType') {
@@ -97,22 +89,23 @@ export default {
                 currentKey = 'Dental'
                 break
               default:
+                currentKey = 'Unknown'
                 break
             }
           }
 
           if (field.field === 'CurrentAmount') {
-            currentKey = this.formatCurrency(value.CurrentAmount)
+            currentKey = this.formatCurrency(obj.CurrentAmount)
           }
 
           if (field.field === 'MaximumAmount') {
-            currentKey = this.formatCurrency(value.MaximumAmount)
+            currentKey = this.formatCurrency(obj.MaximumAmount)
           }
 
           if (field.field === 'ProgressBar') {
             currentKey = this.calculatePercent(
-              value.CurrentAmount,
-              value.MaximumAmount
+              obj.CurrentAmount,
+              obj.MaximumAmount
             )
           }
           // Avoid setting an empty row

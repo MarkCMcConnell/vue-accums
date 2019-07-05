@@ -24,7 +24,6 @@ export default {
   mixins: [dataHelpers],
   data () {
     return {
-      gaps: this.gapsData,
       gapsFields: [
         {
           label: 'Name',
@@ -55,23 +54,33 @@ export default {
   },
   computed: {
     formatGaps () {
-      let gaps = this.gaps.filter(gap => {
+      const gaps = this.gapsData.filter(gap => {
         return gap.SpecificType === 'GC'
       })
 
       let dataValues = []
+      
       for (let obj of gaps) {
         let data = {}
-
-        for (let field of this.gapsFields) {
-          let currentKey = obj[field.field]
+        // TODO: Handle null/undefined values more appropriately
+        for (let value of this.gapsFields) {
+          let currentKey = obj[value.field]
           // Capture dates and convert /Date()/ format to human readable
           if (currentKey.substring(0, 5) === '/Date') {
             currentKey = this.convertJSONDateToDateString(currentKey)
           }
+          // Convert CovBenefit abbreviation to full word
+          if (value.field === 'CovBenefit') {
+            if (currentKey === 'Y') {
+              currentKey = 'Yes'
+            }
+            if (currentKey === 'N') {
+              currentKey === 'No'
+            }
+          }
           // Avoid setting an empty row
-          if (currentKey !== undefined) {
-            data[field.field] = currentKey
+          if (currentKey !== '' && currentKey !== undefined) {
+            data[value.field] = currentKey
           }
         }
         // Push to the array that will be passed to the coverages table

@@ -24,22 +24,17 @@ exports[`Eligibility.vue renders the component 1`] = `
   </div>
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h3>Coverages</h3>
-      <div class="stubbed"></div>
+      <coverages-stub coveragedata="[object Object],[object Object],[object Object],[object Object],[object Object]"></coverages-stub>
     </div>
   </div>
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <section>
-        <h3>My Balances</h3>
-        <div class="stubbed"></div>
-      </section>
+      <accums-stub accumsdata="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"></accums-stub>
     </div>
   </div>
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h3>Gaps in Care</h3>
-      <div class="stubbed"></div>
+      <gaps-stub gapsdata="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"></gaps-stub>
     </div>
   </div>
 </section>

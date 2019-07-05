@@ -6,7 +6,6 @@ const state = {
 
 const mutations = {
   [CHANGE_VIEW] (state, view) {
-    console.log(view)
     state.currentView = view
   }
 }

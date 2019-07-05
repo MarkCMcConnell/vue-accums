@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GapsDashboard renders the component 1`] = `
+<section>
+  <h3>Gaps in Care</h3>
+  <datatable-stub fields="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" data="[object Object]"></datatable-stub>
+</section>
+`;
