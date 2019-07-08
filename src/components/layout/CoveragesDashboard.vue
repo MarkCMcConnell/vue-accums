@@ -1,7 +1,7 @@
 <template>
   <section>
     <h3>Coverages</h3>
-    <DataTable :data="formatCoverages" :fields="coveragesFields"/>
+    <DataTable :data="formatCoverages" :fields="coverageFields"/>
   </section>
 </template>
 
@@ -24,8 +24,7 @@ export default {
   mixins: [dataHelpers],
   data () {
     return {
-      coverages: this.coverageData,
-      coveragesFields: [
+      coverageFields: [
         {
           label: 'Name',
           field: 'CoverageName'
@@ -47,19 +46,21 @@ export default {
   },
   computed: {
     formatCoverages () {
+      const coverage = this.coverageData
       let dataValues = []
-      for (let obj of this.coverages) {
+
+      for (let obj of coverage) {
         let data = {}
 
-        for (let field of this.coveragesFields) {
-          let currentKey = obj[field.field]
+        for (let value of this.coverageFields) {
+          let currentKey = obj[value.field]
           // Capture dates and convert /Date()/ format to human readable
           if (currentKey.substring(0, 5) === '/Date') {
             currentKey = this.convertJSONDateToDateString(currentKey)
           }
           // Avoid setting an empty row
-          if (currentKey !== undefined) {
-            data[field.field] = currentKey
+          if (currentKey !== '' && currentKey !== undefined) {
+            data[value.field] = currentKey
           }
         }
         // Push to the array that will be passed to the coverages table
