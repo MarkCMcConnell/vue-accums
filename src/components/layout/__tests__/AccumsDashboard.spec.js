@@ -25,6 +25,10 @@ describe('AccumsDashboard', () => {
 		})
 	})
 
+	afterEach(() => {
+		wrapper.destroy()
+	})
+
 	it('renders the component', () => {
 		expect(wrapper.html()).toMatchSnapshot()
 	})

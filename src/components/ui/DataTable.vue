@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(obj, index) in sortedData" :key="index">
+      <tr v-for="(obj, index) in sortedData" :key="index" class="dataRow">
         <td v-for="field in fields" :key="field.field">
           <span v-if="field.field == 'ProgressBar'">
             <ProgressBar :width="obj[field.field]"></ProgressBar>

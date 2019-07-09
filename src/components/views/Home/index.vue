@@ -8,24 +8,31 @@
       <span slot="modalButton">Proceed</span>
     </BaseModal>
     <h1>Home</h1>
+    <CoveragesDashboard
+      :coverageData="this.coverages"
+      :isDashboardFormat="coverageDashboard"
+      :yearRange="1"
+    />
   </section>
 </template>
 
 <script>
 // General UI Components
 import BaseModal from '../../ui/BaseModal.vue'
+// Layout components
+import CoveragesDashboard from '../../layout/CoveragesDashboard.vue'
 
 export default {
   components: {
-    BaseModal
+    BaseModal,
+    CoveragesDashboard
   },
   data () {
     return {
-      member: {}
+      member: this.$store.state.memberData[0],
+      coverages: this.$store.state.memberData[0].Coverages,
+      coverageDashboard: true
     }
-  },
-  mounted () {
-    this.member = this.$store.state.memberData[0]
   }
 }
 </script>

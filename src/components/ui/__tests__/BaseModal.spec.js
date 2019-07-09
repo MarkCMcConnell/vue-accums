@@ -21,6 +21,10 @@ describe('Modal component', () => {
       })
     })
 
+    afterEach(() => {
+      wrapper.destroy()
+    })
+
     it('renders correctly', () => {
       expect(wrapper.find('.modalBackdrop')).toBeTruthy()
     })
@@ -54,6 +58,10 @@ describe('Modal component', () => {
         store,
         localVue
       })
+    })
+
+    afterEach(() => {
+      wrapper.destroy()
     })
 
     it('commits a HIDE_MODAL mutation when clicked', () => {

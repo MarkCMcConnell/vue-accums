@@ -1,7 +1,13 @@
 <template>
-  <section>
+  <section
+    :class="this.isDashboardFormat ? 'dashboard' : ''"
+  >
+  <!-- TODO: Slot or props for title -->
     <h3>Coverages</h3>
-    <DataTable :data="formatCoverages" :fields="coverageFields"/>
+    <DataTable
+      :data="formatCoverages"
+      :fields="coverageFields"
+    />
   </section>
 </template>
 
@@ -19,6 +25,12 @@ export default {
     coverageData: {
       type: Array,
       required: true
+    },
+    isDashboardFormat: {
+      type: Boolean
+    },
+    yearRange: {
+      type: Number
     }
   },
   mixins: [dataHelpers],
@@ -46,10 +58,19 @@ export default {
   },
   computed: {
     formatCoverages () {
-      const coverage = this.coverageData
+      let coverages = this.coverageData
       let dataValues = []
 
-      for (let obj of coverage) {
+      if (this.yearRange) {
+        coverages = coverages.filter(coverage => {
+          const currentYear = new Date().getFullYear()
+          let date = this.convertJSONDateToDateString(coverage.EffectiveDate)
+          
+          return parseInt(date.substring(date.length - 4), 10) >= (currentYear - this.yearRange)
+        })
+      }
+
+      for (let obj of coverages) {
         let data = {}
 
         for (let value of this.coverageFields) {
@@ -72,5 +93,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  .dashboard {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    width: 60%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 </style>

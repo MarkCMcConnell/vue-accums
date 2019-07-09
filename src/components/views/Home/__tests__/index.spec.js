@@ -1,10 +1,11 @@
 /* eslint-disable */
 import Vuex from 'vuex'
-import { mount, createLocalVue } from '@vue/test-utils'
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import store from '@/store'
 
 import Home from '@/components/views/Home'
 import BaseModal from '@/components/ui/BaseModal.vue'
+import CoveragesDashboard from '@/components/layout/CoveragesDashboard.vue'
 
 const localVue = createLocalVue()
 
@@ -16,12 +17,19 @@ describe('Home.vue', () => {
     beforeEach(() => {
         mockStore = store
         wrapper = mount(Home, {
-        store: mockStore,
-        localVue,
-        stubs: {
-            BaseModal: '<div class="stubbed modalBackdrop" />'
-        }
+            store: mockStore,
+            localVue,
+            stubs: {
+                BaseModal: '<div class="stubbed modalBackdrop" />'                
+            },
+            setData: {
+                coverageDashboard: true
+            }
         })
+    })
+
+    afterEach(() => {
+        wrapper.destroy()
     })
 
     it('renders the component', () => {
@@ -32,7 +40,14 @@ describe('Home.vue', () => {
         expect(wrapper.contains('h1')).toBe(true)
     })
     
-    it('displays a modal on first load', () => {
-        expect(wrapper.contains('.modalBackdrop')).toBe(true)
+    describe('specific behaviors', () => {
+        it('displays a modal on first load', () => {
+            expect(wrapper.contains('.modalBackdrop')).toBe(true)
+        })
+
+        it('should pass the "dashboard" prop to a dashboard component', () => {
+            const dashboardWrapper = wrapper.find(CoveragesDashboard)
+            expect(dashboardWrapper.props().isDashboardFormat).toEqual(true)
+        })
     })
 })
