@@ -4,7 +4,6 @@ import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import store from '@/store'
 
 import Home from '@/components/views/Home'
-import BaseModal from '@/components/ui/BaseModal.vue'
 import CoveragesDashboard from '@/components/layout/CoveragesDashboard.vue'
 
 const localVue = createLocalVue()
