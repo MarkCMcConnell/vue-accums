@@ -1,7 +1,7 @@
 <template>
-  <component :is="type" class="btn" :class="[ styling ]">
+  <button class="btn" :class="{ 'primary': this.primary, 'secondary': !this.primary }">
     <slot/>
-  </component>
+  </button>
 </template>
 
 <script>
@@ -15,9 +15,9 @@ export default {
       type: String,
       default: null
     },
-    styling: {
-      type: String,
-      default: 'btn-primary'
+    primary: {
+      type: Boolean,
+      default: true
     },
     btnType: {
       type: String,
@@ -27,13 +27,11 @@ export default {
   computed: {
     type () {
       return this.href ? 'a' : 'button'
-    },
-    stylingChange () {
-      return this.styling === 'primary' ? 'btn-primary' : 'btn-secondary'
     }
   }
 }
 </script>
 
 <style>
+  
 </style>

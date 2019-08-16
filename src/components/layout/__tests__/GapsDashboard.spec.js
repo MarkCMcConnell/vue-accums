@@ -5,7 +5,7 @@ import GapsDashboard from '../GapsDashboard.vue'
 
 describe('GapsDashboard', () => {
 	let wrapper
-
+	// TODO: Move props/state changes into the individual test
 	beforeEach(() => {
 		wrapper = shallowMount(GapsDashboard, {
 			propsData: {

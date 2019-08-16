@@ -6,15 +6,20 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit --watchAll"
+    "test:unit": "vue-cli-service test:unit --watchAll --coverage --verbose",
+
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.7",
+    "vue-router": "^3.1.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@storybook/addons": "^5.1.11",
+    "@storybook/vue": "^5.1.11",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.1",
     "@vue/cli-plugin-unit-jest": "^3.9.0",
@@ -24,10 +29,12 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^23.6.0",
+    "babel-preset-vue": "^2.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^7.2.0",
+    "storybook-vue-router": "^1.0.3",
     "vue-jest": "^3.0.4",
     "vue-template-compiler": "^2.6.10"
   },

@@ -2,3 +2,37 @@ h3 {
     font-size: 21px;
     color: #777;
 }
+
+.btn {
+    display: inline-block;
+    padding: .25em 1em;
+    line-height: 2.125rem;
+    font-weight: bold;
+    font-size: .85em;
+    color: #fff;
+    background-color: #399;
+    border: 2px solid #399;
+    border-radius: 3px;
+    box-shadow: none;
+    text-shadow: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: blue;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+        background: lighten(blue, 10%);
+    }
+}
+
+.secondary {
+    background-color: green;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+        background: lighten(green, 10%);
+    }
+}
