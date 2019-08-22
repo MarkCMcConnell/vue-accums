@@ -1,5 +1,8 @@
 <template>
-  <button class="btn" :class="{ 'primary': this.primary, 'secondary': !this.primary }">
+  <button
+    class="btn"
+    :class="this.btnClass"
+  >
     <slot/>
   </button>
 </template>
@@ -15,18 +18,24 @@ export default {
       type: String,
       default: null
     },
-    primary: {
-      type: Boolean,
-      default: true
-    },
-    btnType: {
-      type: String,
-      default: 'submit'
+    btnStyle: {
+      type: String
+    }
+  },
+  data () {
+    return {
+      btnTheme: this.btnStyle
     }
   },
   computed: {
-    type () {
-      return this.href ? 'a' : 'button'
+    btnClass () {
+      if (this.btnTheme === 'secondary') {
+        return 'btn-secondary'
+      } else if (this.btnTheme === 'ghost') {
+        return 'btn-inverse'
+      } else {
+        return 'btn-primary'
+      }
     }
   }
 }
